@@ -1,0 +1,18 @@
+name: 'Run an action based on version'
+
+runs:
+  using: composite
+  steps:
+    - name: Echo the version of Platform Repo
+      shell: bash
+      run: |
+        echo "This is version ${{ github.action_ref }}"
+        
+    - name: List all files in calling repository
+      shell: bash
+      run: |
+        echo "=== Files in calling repository ==="
+        echo "Current directory: $(pwd)"
+        echo "Contents:"
+        find . -type f -not -path './.git/*' | sort
+        
