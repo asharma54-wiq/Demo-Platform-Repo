@@ -1,0 +1,23 @@
+name: Build App
+
+on:
+  workflow_call:
+    inputs:
+      platform-version:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout platform repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}
+          ref: ${{ inputs.platform-version }}
+          path: './platform-code'
+          
+      - name: Run build script
+        run: |
+          bash ./platform-code/hi.sh
