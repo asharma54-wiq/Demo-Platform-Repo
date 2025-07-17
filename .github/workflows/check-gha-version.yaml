@@ -14,8 +14,8 @@ jobs:
       - name: Checkout platform repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository }}
-          ref: ${{ inputs.platform-version }}
+          repository: asharma54-wiq/Demo-Platform-Repo  # Platform repo
+          ref: ${{ inputs.platform-version }}           # Specific tag/version
           path: './platform-code'
           
       - name: Run build script
