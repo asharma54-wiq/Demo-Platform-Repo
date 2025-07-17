@@ -13,6 +13,15 @@ jobs:
     steps:
       - name: Checkout calling repository
         uses: actions/checkout@v4
-      - name: Use versioned platform action
-        uses: asharma54-wiq/Demo-Platform-Repo/.github/actions/versioned-action@${{ inputs.platform-version }}
-      
+        with:
+          path: './project-code'
+          
+      - name: Checkout platform repository
+        uses: actions/checkout@v4
+        with:
+          repository: asharma54-wiq/Demo-Platform-Repo
+          ref: ${{ inputs.platform-version }}
+          path: './platform-code'
+          
+      - name: Use platform action locally
+        uses: ./platform-code/.github/actions/versioned-action
