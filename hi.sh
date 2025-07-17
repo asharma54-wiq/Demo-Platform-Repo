@@ -1,1 +1,1 @@
-echo "Hello from version 1.0"
+echo "Hello from version 2.0"
