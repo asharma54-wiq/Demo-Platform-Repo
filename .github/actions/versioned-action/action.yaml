@@ -8,7 +8,7 @@ runs:
       run: |
         echo "This is version ${{ github.action_ref }}"
         
-    - name: List all files in calling repository (Updated New Version)
+    - name: List all files in calling repository V1.0
       shell: bash
       run: |
         echo "This action is a newer version"
