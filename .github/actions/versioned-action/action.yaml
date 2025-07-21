@@ -3,7 +3,7 @@ name: 'Run an action based on version'
 runs:
   using: composite
   steps:
-    - name: List all files in calling repository v1.0 Version 1 action
+    - name: List all files in calling repository v2.0 Version 1 action
       shell: bash
       run: |
         echo "This action is a version constant action"
