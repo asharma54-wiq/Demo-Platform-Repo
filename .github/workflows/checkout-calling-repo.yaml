@@ -2,26 +2,15 @@ name: Build App
 
 on:
   workflow_call:
-    inputs:
-      platform-version:
-        required: true
-        type: string
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout calling repository
+      - name: Checkout calling repository, This is v1.0
         uses: actions/checkout@v4
         with:
           path: './project-code'
           
-      - name: Checkout platform repository
-        uses: actions/checkout@v4
-        with:
-          repository: asharma54-wiq/Demo-Platform-Repo
-          ref: ${{ inputs.platform-version }}
-          path: './platform-code'
-          
-      - name: Use platform action locally
+      - name: Use platform action locally, This is v1.0
         uses: ./platform-code/.github/actions/versioned-action
