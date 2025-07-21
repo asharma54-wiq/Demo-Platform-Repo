@@ -7,10 +7,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout calling repository, This is v1.0
+      - name: Checkout calling repository, This is v2.0
         uses: actions/checkout@v4
         with:
           path: './project-code'
+      
+      - name: Checkout calling repository, This is v2.0
+        shell: bash
+        run: |
+          echo 'This is version 2.0 of the workflow'
           
-      - name: Use platform action locally, This is v1.0
+      - name: Use platform action locally, This is v2.0
         uses: ./platform-code/.github/actions/versioned-action
