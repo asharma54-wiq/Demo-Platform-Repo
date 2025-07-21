@@ -3,12 +3,7 @@ name: 'Run an action based on version'
 runs:
   using: composite
   steps:
-    - name: Echo the version of Platform Repo
-      shell: bash
-      run: |
-        echo "This is version ${{ github.action_ref }}"
-        
-    - name: List all files in calling repository
+    - name: List all files in calling repository v1.0 Version 1 action
       shell: bash
       run: |
         echo "This action is a version constant action"
