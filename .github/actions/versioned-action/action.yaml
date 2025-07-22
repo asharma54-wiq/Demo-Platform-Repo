@@ -3,10 +3,9 @@ name: 'Run an action based on version'
 runs:
   using: composite
   steps:
-    - name: List all files in calling repository v2.0 Version 1 action
+    - name: List all files in calling repository v3.0 Version 3 action
       shell: bash
       run: |
-        echo "This action is a version constant action"
         echo "=== Files in calling repository ==="
         echo "Current directory: $(pwd)"
         echo "Contents of ./project-code/:"
