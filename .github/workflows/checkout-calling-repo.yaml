@@ -7,15 +7,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout calling repository, This is v2.0
+      - name: Checkout calling repository, This is v3.0
         uses: actions/checkout@v4
         with:
           path: './project-code'
 
-      - name: Echo the version, This is v2.0
+      - name: Echo the version, This is v3.0
         shell: bash
         run: |
-          echo 'This is version 2.0 of the workflow'
+          echo 'This is version 3.0 of the workflow'
+
+      - name: Read platform version from project-code/platform.yaml
+        id: get_platform_version
+        run: |
+          PLATFORM_VERSION=$(yq '.version' ./project-code/platform.yaml)
+          echo "Platform version is: $PLATFORM_VERSION"
+          echo "PLATFORM_VERSION=$PLATFORM_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout Platform Repository (Specific Version from project.yaml)
+        uses: actions/checkout@v4
+        with:
+           repository: asharma54-wiq/Demo-Platform-Repo # Explicitly specify the platform repo
+           ref: v${{ steps.get_platform_version.outputs.PLATFORM_VERSION }} # Use the version read from project-code/platform.yaml
+           path: './platform-tools'                    # Checkout into a separate directory
+
           
-      - name: Use platform action locally, This is v2.0
-        uses: asharma54-wiq/Demo-Platform-Repo/.github/actions/versioned-action@v2.0
+      - name: Use platform action locally, This is v3.0
+        uses: asharma54-wiq/Demo-Platform-Repo/.github/actions/versioned-action@v3.0
