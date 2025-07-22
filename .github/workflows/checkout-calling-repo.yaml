@@ -17,6 +17,11 @@ jobs:
         run: |
           echo 'This is version 3.0 of the workflow'
 
+      - name: Install yq
+        run: |
+          sudo wget https://github.com/mikefarah/yq/releases/download/v4.44.1/yq_linux_amd64 -O /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
+
       - name: Read platform version from project-code/platform.yaml
         id: get_platform_version
         run: |
